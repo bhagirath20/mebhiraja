@@ -67,6 +67,15 @@
         color: #ffd700;
       }
 
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
       main {
         margin-top: 80px;
         padding: 2rem 0;
@@ -391,6 +400,48 @@
         color: #fff;
       }
 
+      .newsletter-signup {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: #fff;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      .newsletter-signup h3 {
+        margin-bottom: 1rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+      }
+
+      .newsletter-form button {
+        padding: 0.8rem 1.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form button:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
       footer {
         background: rgba(0, 0, 0, 0.8);
         color: #fff;
@@ -402,6 +453,22 @@
       @media (max-width: 768px) {
         .nav-menu {
           display: none;
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.9);
+          flex-direction: column;
+          padding: 2rem;
+          gap: 1rem;
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .mobile-menu-toggle {
+          display: block;
         }
 
         .blog-hero h1 {
@@ -424,6 +491,10 @@
           flex-direction: column;
           gap: 0.5rem;
         }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
       }
 
       .scroll-animate {
@@ -436,6 +507,63 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      .share-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+      }
+
+      .share-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .share-btn.facebook {
+        background: #3b5998;
+      }
+      .share-btn.twitter {
+        background: #1da1f2;
+      }
+      .share-btn.linkedin {
+        background: #0077b5;
+      }
+      .share-btn.whatsapp {
+        background: #25d366;
+      }
+
+      .share-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #666;
+      }
+
+      .error-message {
+        background: #ffe6e6;
+        color: #d63384;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+      }
+
+      .success-message {
+        background: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -444,12 +572,15 @@
         <div class="header-content">
           <a href="../index.html" class="logo">🔥 MeBhiRaja</a>
           <nav>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
               <li><a href="../index.html">Home</a></li>
               <li><a href="index.html">Blog</a></li>
               <li><a href="../index.html#courses">Courses</a></li>
               <li><a href="../index.html#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+              ☰
+            </button>
           </nav>
         </div>
       </div>
@@ -618,29 +749,74 @@
                   type="text"
                   class="search-box"
                   placeholder="Search articles..."
+                  onkeyup="searchArticles(this.value)"
                 />
               </div>
 
               <div class="sidebar-section">
                 <h3 class="sidebar-title">Categories</h3>
                 <ul class="sidebar-list">
-                  <li><a href="#">Stock Market (12)</a></li>
-                  <li><a href="#">Exam Prep (18)</a></li>
-                  <li><a href="#">Child Development (8)</a></li>
-                  <li><a href="#">Chess (6)</a></li>
-                  <li><a href="#">Career Guidance (15)</a></li>
-                  <li><a href="#">Study Tips (10)</a></li>
+                  <li>
+                    <a href="#" onclick="filterByCategory('stock-market')"
+                      >Stock Market (12)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="filterByCategory('exam-prep')"
+                      >Exam Prep (18)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="filterByCategory('child-development')"
+                      >Child Development (8)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="filterByCategory('chess')"
+                      >Chess (6)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="filterByCategory('career')"
+                      >Career Guidance (15)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="filterByCategory('study-tips')"
+                      >Study Tips (10)</a
+                    >
+                  </li>
                 </ul>
               </div>
 
               <div class="sidebar-section">
                 <h3 class="sidebar-title">Recent Posts</h3>
                 <ul class="sidebar-list">
-                  <li><a href="#">Top 10 Trading Strategies for 2024</a></li>
-                  <li><a href="#">CMAT Preparation Timeline</a></li>
-                  <li><a href="#">Building Confidence in Children</a></li>
-                  <li><a href="#">Chess Openings for Beginners</a></li>
-                  <li><a href="#">Interview Skills That Matter</a></li>
+                  <li>
+                    <a href="#" onclick="showArticle('trading-strategies')"
+                      >Top 10 Trading Strategies for 2024</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('cmat-prep')"
+                      >CMAT Preparation Timeline</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('confidence-building')"
+                      >Building Confidence in Children</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('chess-openings')"
+                      >Chess Openings for Beginners</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('interview-skills')"
+                      >Interview Skills That Matter</a
+                    >
+                  </li>
                 </ul>
               </div>
 
@@ -654,6 +830,21 @@
                   <span class="blog-category">Career</span>
                   <span class="blog-category">Study</span>
                 </div>
+              </div>
+
+              <div class="newsletter-signup">
+                <h3>📧 Newsletter</h3>
+                <p>
+                  Subscribe to get the latest educational insights and tips
+                  delivered to your inbox.
+                </p>
+                <form
+                  class="newsletter-form"
+                  onsubmit="subscribeNewsletter(event)"
+                >
+                  <input type="email" placeholder="Enter your email" required />
+                  <button type="submit">Subscribe</button>
+                </form>
               </div>
             </div>
           </div>
@@ -739,6 +930,33 @@
                 </p>
               </div>
 
+              <div class="share-buttons">
+                <a
+                  href="#"
+                  class="share-btn facebook"
+                  onclick="shareArticle('facebook')"
+                  >📘 Share on Facebook</a
+                >
+                <a
+                  href="#"
+                  class="share-btn twitter"
+                  onclick="shareArticle('twitter')"
+                  >🐦 Share on Twitter</a
+                >
+                <a
+                  href="#"
+                  class="share-btn linkedin"
+                  onclick="shareArticle('linkedin')"
+                  >💼 Share on LinkedIn</a
+                >
+                <a
+                  href="#"
+                  class="share-btn whatsapp"
+                  onclick="shareArticle('whatsapp')"
+                  >📱 Share on WhatsApp</a
+                >
+              </div>
+
               <div class="author-box">
                 <div class="author-info">
                   <div class="author-avatar">MR</div>
@@ -758,10 +976,26 @@
               <div class="sidebar-section">
                 <h3 class="sidebar-title">Related Articles</h3>
                 <ul class="sidebar-list">
-                  <li><a href="#">Understanding Market Volatility</a></li>
-                  <li><a href="#">Building Your First Portfolio</a></li>
-                  <li><a href="#">Risk Management Strategies</a></li>
-                  <li><a href="#">Technical Analysis Basics</a></li>
+                  <li>
+                    <a href="#" onclick="showArticle('market-volatility')"
+                      >Understanding Market Volatility</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('first-portfolio')"
+                      >Building Your First Portfolio</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('risk-management')"
+                      >Risk Management Strategies</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" onclick="showArticle('technical-analysis')"
+                      >Technical Analysis Basics</a
+                    >
+                  </li>
                 </ul>
               </div>
 
@@ -895,8 +1129,8 @@
                 </ul>
 
                 <h2>Benefits for Different Age Groups</h2>
-                <p>Chess offers unique advantages for every age group, from young children developing their cognitive abilities to seniors maintaining mental sharp
-            </p>`,
+                <p>Chess offers unique advantages for every age group, from young children developing their cognitive abilities to seniors maintaining mental sharp</p>
+                `,
         },
       };
     </script>
