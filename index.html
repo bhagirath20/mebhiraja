@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeBhiRaja - Surendranagar Offline Classes</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-menu a:hover {
+        color: #ffd700;
+      }
+
+      main {
+        margin-top: 80px;
+        padding: 2rem 0;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 4rem 0;
+        color: #fff;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .course-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .course-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+      }
+
+      .course-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .course-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .course-details {
+        margin-bottom: 1.5rem;
+      }
+
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        padding: 0.3rem 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .detail-label {
+        font-weight: 600;
+        color: #555;
+      }
+
+      .detail-value {
+        color: #333;
+      }
+
+      .price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #e74c3c;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .features {
+        margin-top: 1rem;
+      }
+
+      .features h4 {
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .features ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .features li {
+        padding: 0.2rem 0;
+        color: #666;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #27ae60;
+        font-weight: bold;
+      }
+
+      .contact-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 3rem;
+        margin-top: 4rem;
+        text-align: center;
+        color: #fff;
+      }
+
+      .contact-section h2 {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-3px);
+      }
+
+      footer {
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+
+      .highlight {
+        background: linear-gradient(45deg, #ff6b6b, #ffa500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .courses-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .scroll-animate.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">🔥 MeBhiRaja</div>
+          <nav>
+            <ul class="nav-menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container">
+          <h1>
+            Master Your Future with <span class="highlight">MeBhiRaja</span>
+          </h1>
+          <p>
+            Premium Offline Classes in Surendranagar - Transform Your Career &
+            Skills
+          </p>
+          <a href="#courses" class="btn">Explore Our Courses</a>
+        </div>
+      </section>
+
+      <section id="courses" class="container">
+        <div class="courses-grid">
+          <!-- Stock Market Course -->
+          <div class="course-card scroll-animate">
+            <div class="course-icon">📈</div>
+            <h3 class="course-title">Stock Market Mastery</h3>
+            <div class="course-details">
+              <div class="detail-item">
+                <span class="detail-label">Time:</span>
+                <span class="detail-value">9:00 AM - 10:00 AM</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Days:</span>
+                <span class="detail-value">Mon - Fri</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Mode:</span>
+                <span class="detail-value">Theory + Live Market</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Duration:</span>
+                <span class="detail-value">3 Months</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Requirements:</span>
+                <span class="detail-value">Laptop + Mobile</span>
+              </div>
+            </div>
+            <div class="price">₹21,111</div>
+            <div class="features">
+              <h4>Expected Returns:</h4>
+              <p style="color: #27ae60; font-weight: bold">
+                2% to 100% per month (practically guided)
+              </p>
+              <h4 style="margin-top: 1rem">Career Inspiration:</h4>
+              <p style="color: #3498db; font-weight: bold">
+                Quant Salary ~ ₹4 Cr (via C++ / Python Skills)
+              </p>
+            </div>
+            <button class="btn" onclick="enrollNow('Stock Market Mastery')">
+              Enroll Now
+            </button>
+          </div>
+
+          <!-- Government Exams Course -->
+          <div class="course-card scroll-animate">
+            <div class="course-icon">🧠</div>
+            <h3 class="course-title">Bank/CMAT/Government Exams</h3>
+            <div class="course-details">
+              <div class="detail-item">
+                <span class="detail-label">Time Slots:</span>
+                <span class="detail-value"
+                  >10:30 AM-12:00 PM<br />5:00 PM-6:30 PM</span
+                >
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Schedule:</span>
+                <span class="detail-value"
+                  >Mon,Wed,Fri - Lecture<br />Tue,Thu,Sat - Tests</span
+                >
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Duration:</span>
+                <span class="detail-value">1 Year</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Offline:</span>
+                <span class="detail-value">₹21,111</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Online:</span>
+                <span class="detail-value">₹16,111</span>
+              </div>
+            </div>
+            <div class="features">
+              <h4>Free Add-on Skills:</h4>
+              <ul>
+                <li>Resume Writing</li>
+                <li>Spoken English</li>
+                <li>Interview Skills</li>
+                <li>Private Job-Oriented Skills</li>
+              </ul>
+            </div>
+            <button class="btn" onclick="enrollNow('Government Exams')">
+              Enroll Now
+            </button>
+          </div>
+
+          <!-- Vedic Maths Course -->
+          <div class="course-card scroll-animate">
+            <div class="course-icon">👶</div>
+            <h3 class="course-title">Vedic Maths + Abacus for Kids</h3>
+            <div class="course-details">
+              <div class="detail-item">
+                <span class="detail-label">Age Group:</span>
+                <span class="detail-value">6-14 years</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Batch 1:</span>
+                <span class="detail-value">3:00 PM - 4:30 PM</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Batch 2:</span>
+                <span class="detail-value">6:45 PM - 8:00 PM</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Days:</span>
+                <span class="detail-value">Mon, Wed, Fri</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Duration:</span>
+                <span class="detail-value">2 Years</span>
+              </div>
+            </div>
+            <div class="price">₹41,111</div>
+            <div class="features">
+              <h4>Curriculum Add-ons:</h4>
+              <ul>
+                <li>Confidence Boosting</li>
+                <li>Public Speaking</li>
+                <li>Selling & Leadership Skills</li>
+                <li>Personality Development</li>
+                <li>Civic Sense</li>
+                <li>Alumni Network</li>
+                <li><strong>Future Leaders Program</strong></li>
+              </ul>
+            </div>
+            <button class="btn" onclick="enrollNow('Vedic Maths + Abacus')">
+              Enroll Now
+            </button>
+          </div>
+
+          <!-- Chess Course -->
+          <div class="course-card scroll-animate">
+            <div class="course-icon">♟️</div>
+            <h3 class="course-title">Chess & Blind Chess</h3>
+            <div class="course-details">
+              <div class="detail-item">
+                <span class="detail-label">Age Group:</span>
+                <span class="detail-value">6-100 years</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Batch 1:</span>
+                <span class="detail-value">3:00 PM - 4:30 PM</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Batch 2:</span>
+                <span class="detail-value">6:45 PM - 8:00 PM</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Days:</span>
+                <span class="detail-value">Tue, Thu, Sat</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">1 Year:</span>
+                <span class="detail-value">₹21,111</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">2 Years:</span>
+                <span class="detail-value">₹41,111</span>
+              </div>
+            </div>
+            <div class="features">
+              <h4>Objectives:</h4>
+              <ul>
+                <li>Learn & Play</li>
+                <li>Become International Rated Player</li>
+                <li>Build a Community</li>
+              </ul>
+              <h4>Perfect For:</h4>
+              <ul>
+                <li>Kids mastering the game</li>
+                <li>Retired individuals seeking joy & purpose</li>
+              </ul>
+            </div>
+            <button class="btn" onclick="enrollNow('Chess & Blind Chess')">
+              Enroll Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2>Ready to Transform Your Future?</h2>
+          <p>
+            Join thousands of students who have already started their journey
+            with MeBhiRaja
+          </p>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <h3>📍 Location</h3>
+              <p>Surendranagar, Gujarat</p>
+            </div>
+            <div class="contact-item">
+              <h3>📞 Contact</h3>
+              <p>Call for enrollment details</p>
+            </div>
+            <div class="contact-item">
+              <h3>⏰ Office Hours</h3>
+              <p>Mon-Sat: 9:00 AM - 8:00 PM</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem">
+            <a href="#" class="btn" onclick="contactUs()">Contact Us Now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2024 MeBhiRaja. All rights reserved. | Empowering Students in
+          Surendranagar
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Scroll animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".scroll-animate").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Enrollment function
+      function enrollNow(courseName) {
+        alert(
+          `Thank you for your interest in ${courseName}!\n\nPlease contact us for enrollment details and to secure your seat.\n\nLocation: Surendranagar, Gujarat`
+        );
+      }
+
+      // Contact function
+      function contactUs() {
+        alert(
+          "Contact Information:\n\nLocation: Surendranagar, Gujarat\nOffice Hours: Mon-Sat, 9:00 AM - 8:00 PM\n\nVisit our center for detailed consultation and enrollment!"
+        );
+      }
+
+      // Add dynamic background particles effect
+      function createParticles() {
+        const particles = document.createElement("div");
+        particles.style.position = "fixed";
+        particles.style.top = "0";
+        particles.style.left = "0";
+        particles.style.width = "100%";
+        particles.style.height = "100%";
+        particles.style.pointerEvents = "none";
+        particles.style.zIndex = "-1";
+
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement("div");
+          particle.style.position = "absolute";
+          particle.style.width = "2px";
+          particle.style.height = "2px";
+          particle.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+          particle.style.borderRadius = "50%";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animation = `float ${
+            3 + Math.random() * 4
+          }s infinite ease-in-out`;
+          particles.appendChild(particle);
+        }
+
+        document.body.appendChild(particles);
+      }
+
+      // Add floating animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Initialize particles
+      createParticles();
+    </script>
+  </body>
+</html>
