@@ -1,800 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MeBhiRaja - Surendranagar Offline Classes</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEBHIRAJA Institute - The Royal Path to Learning & Success</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      body {
-        font-family: "Arial", sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-      }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-      header {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1rem 0;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
 
-      .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-      .logo {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-      .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
+        .crown {
+            color: #ff4757;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
 
-      .nav-menu a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-      .nav-menu a:hover {
-        color: #ffd700;
-      }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-      main {
-        margin-top: 80px;
-        padding: 2rem 0;
-      }
+        .nav-links a:hover {
+            color: #ff4757;
+        }
 
-      .hero {
-        text-align: center;
-        padding: 4rem 0;
-        color: #fff;
-      }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-      }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
 
-      .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-      .course-card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .course-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
-      }
-
-      .course-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .course-title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        color: #333;
-      }
-
-      .course-details {
-        margin-bottom: 1.5rem;
-      }
-
-      .detail-item {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.5rem;
-        padding: 0.3rem 0;
-        border-bottom: 1px solid #eee;
-      }
-
-      .detail-label {
-        font-weight: 600;
-        color: #555;
-      }
-
-      .detail-value {
-        color: #333;
-      }
-
-      .price {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #e74c3c;
-        text-align: center;
-        margin: 1rem 0;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 0.8rem 2rem;
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        width: 100%;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .features {
-        margin-top: 1rem;
-      }
-
-      .features h4 {
-        margin-bottom: 0.5rem;
-        color: #333;
-      }
-
-      .features ul {
-        list-style: none;
-        padding-left: 0;
-      }
-
-      .features li {
-        padding: 0.2rem 0;
-        color: #666;
-        position: relative;
-        padding-left: 1.5rem;
-      }
-
-      .features li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #27ae60;
-        font-weight: bold;
-      }
-
-      .contact-section {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 3rem;
-        margin-top: 4rem;
-        text-align: center;
-        color: #fff;
-      }
-
-      .blog-section {
-        padding: 4rem 0;
-        margin-top: 4rem;
-      }
-
-      .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .blog-card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .blog-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
-      }
-
-      .blog-image {
-        width: 100%;
-        height: 150px;
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        border-radius: 10px;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        color: #fff;
-      }
-
-      .blog-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-        color: #666;
-      }
-
-      .blog-category {
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        color: #fff;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-
-      .blog-title {
-        font-size: 1.3rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        color: #333;
-      }
-
-      .blog-excerpt {
-        color: #666;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-      }
-
-      .read-more {
-        color: #667eea;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s ease;
-      }
-
-      .read-more:hover {
-        color: #764ba2;
-      }
-
-      .contact-section h2 {
-        margin-bottom: 1rem;
-        font-size: 2rem;
-      }
-
-      .contact-info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-
-      .contact-item {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 1.5rem;
-        border-radius: 10px;
-        transition: transform 0.3s ease;
-      }
-
-      .contact-item:hover {
-        transform: translateY(-3px);
-      }
-
-      footer {
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        text-align: center;
-        padding: 2rem 0;
-        margin-top: 3rem;
-      }
-
-      .highlight {
-        background: linear-gradient(45deg, #ff6b6b, #ffa500);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: bold;
-      }
-
-      @media (max-width: 768px) {
-        .nav-menu {
-          display: none;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-          font-size: 2rem;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .courses-grid {
-          grid-template-columns: 1fr;
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4757, #ff6b7a);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
+        }
+
+        /* Academies Section */
+        .academies {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a2e;
+        }
+
+        .academies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .academy-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #ff4757;
+        }
+
+        .academy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .academy-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .academy-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .academy-title {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+
+        .academy-scope {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .benefits-list li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .age-requirement {
+            background: #fff3e0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 2px solid #ff9800;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .demo-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-date {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff4757;
         }
 
         .contact-info {
-          grid-template-columns: 1fr;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
         }
-      }
 
-      .scroll-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-      }
+        .contact-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff4757;
+        }
 
-      .scroll-animate.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #1a1a2e;
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .academies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .academy-card {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #ff4757, #ff6b7a);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+            z-index: 9999;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+    <div class="scroll-indicator"></div>
+    
     <header>
-      <div class="container">
-        <div class="header-content">
-          <div class="logo">🔥 MeBhiRaja</div>
-          <nav>
-            <ul class="nav-menu">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#courses">Courses</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contact</a></li>
+        <nav class="container">
+            <div class="logo">
+                <span class="crown">👑</span>
+                MEBHIRAJA INSTITUTE
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#academies">Academies</a></li>
+                <li><a href="#demo">Demo Classes</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-          </nav>
-        </div>
-      </div>
+        </nav>
     </header>
 
-    <main>
-      <section id="home" class="hero">
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>The Royal Path to Learning & Success</h1>
+            <p>Transform your passion into expertise with our world-class academies</p>
+            <a href="#demo" class="cta-button">Book Demo Class</a>
+        </div>
+    </section>
+
+    <section id="academies" class="academies">
         <div class="container">
-          <h1>
-            Master Your Future with <span class="highlight">MeBhiRaja</span>
-          </h1>
-          <p>
-            Premium Offline Classes in Surendranagar - Transform Your Career &
-            Skills
-          </p>
-          <a href="#courses" class="btn">Explore Our Courses</a>
+            <h2 class="section-title">Our Royal Academies</h2>
+            
+            <div class="academies-grid">
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">♟️</span>
+                        <h3 class="academy-title">Chess Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        From absolute beginners to strong competitive players with ratings up to 2000 FIDE
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Build solid foundation & tournament experience</li>
+                        <li>Dominate district, state & international levels</li>
+                        <li>State/national recognition & sports quota benefits</li>
+                        <li>Guidance toward IM, GM titles</li>
+                        <li>Fame, sponsorships & global opportunities</li>
+                    </ul>
+                    <span class="age-requirement">Age: 4+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">📈</span>
+                        <h3 class="academy-title">Live Trading Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        From beginners to confident live traders in Stock Market, Forex & Crypto
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Price action & technical analysis mastery</li>
+                        <li>Risk management & trading psychology</li>
+                        <li>Multiple asset classes expertise</li>
+                        <li>Financial independence pathway</li>
+                        <li>Global market participation</li>
+                    </ul>
+                    <span class="age-requirement">Age: 18+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🏛️</span>
+                        <h3 class="academy-title">Competitive Exam Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        MBA/MCA (CMAT) and government job exams: Banking, Insurance, Railways, SSC
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Quantitative aptitude & reasoning</li>
+                        <li>English & general awareness</li>
+                        <li>Proven time-saving methods</li>
+                        <li>Top MBA/MCA program admission</li>
+                        <li>Stable, high-paying government careers</li>
+                    </ul>
+                    <span class="age-requirement">Age: 18+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🤖</span>
+                        <h3 class="academy-title">AI Digital Marketing Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        Full-stack AI-powered marketing: SEO, social media, ads, email & automation
+                    </div>
+                    <ul class="benefits-list">
+                        <li>AI tools for high-converting campaigns</li>
+                        <li>Workflow automation & optimization</li>
+                        <li>High-paying jobs & freelance income</li>
+                        <li>Global client work opportunities</li>
+                        <li>Future-proof career skills</li>
+                    </ul>
+                    <span class="age-requirement">Age: 16+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">💼</span>
+                        <h3 class="academy-title">Young CEO Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        From curious beginners to confident leaders with business & financial skills
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Business planning & marketing</li>
+                        <li>Negotiation & decision-making</li>
+                        <li>Leadership & strategic thinking</li>
+                        <li>Real-world entrepreneurial exposure</li>
+                        <li>Networking & mentorship</li>
+                    </ul>
+                    <span class="age-requirement">Age: 12+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🔢</span>
+                        <h3 class="academy-title">KenKen Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        Expert puzzle solving in KenKen - enhancing math & logic skills
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Mental arithmetic & reasoning</li>
+                        <li>Pattern recognition mastery</li>
+                        <li>Boost academic performance</li>
+                        <li>Competitive exam readiness</li>
+                        <li>Faster thinking & problem-solving</li>
+                    </ul>
+                    <span class="age-requirement">Age: 6+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">💹</span>
+                        <h3 class="academy-title">Financial Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        Confident trading & investing in equities and derivatives with SEBI compliance
+                    </div>
+                    <ul class="benefits-list">
+                        <li>NISM Series VIII certification</li>
+                        <li>Technical & fundamental analysis</li>
+                        <li>Options strategies & portfolio management</li>
+                        <li>High-paying finance careers</li>
+                        <li>Ethical & profitable trading</li>
+                    </ul>
+                    <span class="age-requirement">Age: 18+ years</span>
+                </div>
+
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🧮</span>
+                        <h3 class="academy-title">Vedic Maths & Abacus Academy</h3>
+                    </div>
+                    <div class="academy-scope">
+                        Lightning-fast mental calculation using Vedic Maths shortcuts & Abacus method
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Develop speed & accuracy without calculators</li>
+                        <li>Improve concentration & memory power</li>
+                        <li>Enhanced academic performance</li>
+                        <li>Competitive exam advantage</li>
+                        <li>Transform math from fear to strength</li>
+                    </ul>
+                    <span class="age-requirement">Age: 5+ years</span>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="courses" class="container">
-        <div class="courses-grid">
-          <!-- Stock Market Course -->
-          <div class="course-card scroll-animate">
-            <div class="course-icon">📈</div>
-            <h3 class="course-title">Stock Market Mastery</h3>
-            <div class="course-details">
-              <div class="detail-item">
-                <span class="detail-label">Time:</span>
-                <span class="detail-value">9:00 AM - 10:00 AM</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Days:</span>
-                <span class="detail-value">Mon - Fri</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Mode:</span>
-                <span class="detail-value">Theory + Live Market</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Duration:</span>
-                <span class="detail-value">3 Months</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Requirements:</span>
-                <span class="detail-value">Laptop + Mobile</span>
-              </div>
-            </div>
-            <div class="price">₹21,111</div>
-            <div class="features">
-              <h4>Expected Returns:</h4>
-              <p style="color: #27ae60; font-weight: bold">
-                2% to 100% per month (practically guided)
-              </p>
-              <h4 style="margin-top: 1rem">Career Inspiration:</h4>
-              <p style="color: #3498db; font-weight: bold">
-                Quant Salary ~ ₹4 Cr (via C++ / Python Skills)
-              </p>
-            </div>
-            <button class="btn" onclick="enrollNow('Stock Market Mastery')">
-              Enroll Now
-            </button>
-          </div>
-
-          <!-- Government Exams Course -->
-          <div class="course-card scroll-animate">
-            <div class="course-icon">🧠</div>
-            <h3 class="course-title">Bank/CMAT/Government Exams</h3>
-            <div class="course-details">
-              <div class="detail-item">
-                <span class="detail-label">Time Slots:</span>
-                <span class="detail-value"
-                  >10:30 AM-12:00 PM<br />5:00 PM-6:30 PM</span
-                >
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Schedule:</span>
-                <span class="detail-value"
-                  >Mon,Wed,Fri - Lecture<br />Tue,Thu,Sat - Tests</span
-                >
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Duration:</span>
-                <span class="detail-value">1 Year</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Offline:</span>
-                <span class="detail-value">₹21,111</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Online:</span>
-                <span class="detail-value">₹16,111</span>
-              </div>
-            </div>
-            <div class="features">
-              <h4>Free Add-on Skills:</h4>
-              <ul>
-                <li>Resume Writing</li>
-                <li>Spoken English</li>
-                <li>Interview Skills</li>
-                <li>Private Job-Oriented Skills</li>
-              </ul>
-            </div>
-            <button class="btn" onclick="enrollNow('Government Exams')">
-              Enroll Now
-            </button>
-          </div>
-
-          <!-- Vedic Maths Course -->
-          <div class="course-card scroll-animate">
-            <div class="course-icon">👶</div>
-            <h3 class="course-title">Vedic Maths + Abacus for Kids</h3>
-            <div class="course-details">
-              <div class="detail-item">
-                <span class="detail-label">Age Group:</span>
-                <span class="detail-value">6-14 years</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Batch 1:</span>
-                <span class="detail-value">3:00 PM - 4:30 PM</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Batch 2:</span>
-                <span class="detail-value">6:45 PM - 8:00 PM</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Days:</span>
-                <span class="detail-value">Mon, Wed, Fri</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Duration:</span>
-                <span class="detail-value">2 Years</span>
-              </div>
-            </div>
-            <div class="price">₹41,111</div>
-            <div class="features">
-              <h4>Curriculum Add-ons:</h4>
-              <ul>
-                <li>Confidence Boosting</li>
-                <li>Public Speaking</li>
-                <li>Selling & Leadership Skills</li>
-                <li>Personality Development</li>
-                <li>Civic Sense</li>
-                <li>Alumni Network</li>
-                <li><strong>Future Leaders Program</strong></li>
-              </ul>
-            </div>
-            <button class="btn" onclick="enrollNow('Vedic Maths + Abacus')">
-              Enroll Now
-            </button>
-          </div>
-
-          <!-- Chess Course -->
-          <div class="course-card scroll-animate">
-            <div class="course-icon">♟️</div>
-            <h3 class="course-title">Chess & Blind Chess</h3>
-            <div class="course-details">
-              <div class="detail-item">
-                <span class="detail-label">Age Group:</span>
-                <span class="detail-value">6-100 years</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Batch 1:</span>
-                <span class="detail-value">3:00 PM - 4:30 PM</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Batch 2:</span>
-                <span class="detail-value">6:45 PM - 8:00 PM</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Days:</span>
-                <span class="detail-value">Tue, Thu, Sat</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">1 Year:</span>
-                <span class="detail-value">₹21,111</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">2 Years:</span>
-                <span class="detail-value">₹41,111</span>
-              </div>
-            </div>
-            <div class="features">
-              <h4>Objectives:</h4>
-              <ul>
-                <li>Learn & Play</li>
-                <li>Become International Rated Player</li>
-                <li>Build a Community</li>
-              </ul>
-              <h4>Perfect For:</h4>
-              <ul>
-                <li>Kids mastering the game</li>
-                <li>Retired individuals seeking joy & purpose</li>
-              </ul>
-            </div>
-            <button class="btn" onclick="enrollNow('Chess & Blind Chess')">
-              Enroll Now
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section id="blog" class="blog-section">
+    <section id="demo" class="demo-section">
         <div class="container">
-          <h2
-            style="
-              text-align: center;
-              color: #fff;
-              margin-bottom: 3rem;
-              font-size: 2.5rem;
-            "
-          >
-            📚 Latest Educational Insights
-          </h2>
-
-          <div class="blog-grid">
-            <div class="blog-card scroll-animate">
-              <div class="blog-image">📈</div>
-              <div class="blog-meta">
-                <span class="blog-category">Stock Market</span>
-                <span>Dec 15, 2024</span>
-              </div>
-              <h3 class="blog-title">
-                5 Essential Stock Market Tips for Beginners
-              </h3>
-              <p class="blog-excerpt">
-                Learn the fundamental principles of stock market investing and
-                start your journey with confidence...
-              </p>
-              <a href="blogs/index.html" class="read-more">Read More →</a>
+            <div class="demo-content">
+                <h2 class="section-title" style="color: white;">Demo Classes Starting Soon!</h2>
+                <div class="demo-date">📅 Demo Classes: 25 August onwards</div>
+                <p style="font-size: 1.2rem; margin: 1rem 0;">🎟️ Limited Seats Available – Reserve Early!</p>
+                <p style="margin-bottom: 2rem;">Register your name for demo class and experience the royal path to success</p>
+                
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1rem;">Contact for Registration</h3>
+                    <p>Bhagirath Sir</p>
+                    <div class="contact-number">📞 +91 9427-406-406</div>
+                </div>
+                
+                <a href="tel:+919427406406" class="cta-button" style="margin-top: 2rem;">Call Now to Register</a>
             </div>
-
-            <div class="blog-card scroll-animate">
-              <div class="blog-image">🧠</div>
-              <div class="blog-meta">
-                <span class="blog-category">Exam Prep</span>
-                <span>Dec 12, 2024</span>
-              </div>
-              <h3 class="blog-title">
-                How to Crack Government Exams: Complete Guide
-              </h3>
-              <p class="blog-excerpt">
-                Master the art of government exam preparation with our
-                comprehensive strategies and tips...
-              </p>
-              <a href="blogs/index.html" class="read-more">Read More →</a>
-            </div>
-
-            <div class="blog-card scroll-animate">
-              <div class="blog-image">👶</div>
-              <div class="blog-meta">
-                <span class="blog-category">Child Development</span>
-                <span>Dec 10, 2024</span>
-              </div>
-              <h3 class="blog-title">
-                Why Vedic Maths is Perfect for Your Child
-              </h3>
-              <p class="blog-excerpt">
-                Discover how Vedic Mathematics boosts your child's confidence,
-                speed, and logical thinking...
-              </p>
-              <a href="blogs/index.html" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div style="text-align: center; margin-top: 2rem">
-            <a
-              href="blogs/index.html"
-              class="btn"
-              style="
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(10px);
-                border: 2px solid rgba(255, 255, 255, 0.3);
-              "
-              >View All Blogs</a
-            >
-          </div>
         </div>
-      </section>
+    </section>
 
-      <section id="contact" class="contact-section">
+    <footer id="contact">
         <div class="container">
-          <h2>Ready to Transform Your Future?</h2>
-          <p>
-            Join thousands of students who have already started their journey
-            with MeBhiRaja
-          </p>
-
-          <div class="contact-info">
-            <div class="contact-item">
-              <h3>📍 Location</h3>
-              <p>Surendranagar, Gujarat</p>
-            </div>
-            <div class="contact-item">
-              <h3>📞 Contact</h3>
-              <p>Call for enrollment details</p>
-            </div>
-            <div class="contact-item">
-              <h3>⏰ Office Hours</h3>
-              <p>Mon-Sat: 9:00 AM - 8:00 PM</p>
-            </div>
-          </div>
-
-          <div style="margin-top: 2rem">
-            <a href="#" class="btn" onclick="contactUs()">Contact Us Now</a>
-          </div>
+            <p>&copy; 2024 MEBHIRAJA Institute. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">The Royal Path to Learning & Success</p>
         </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container">
-        <p>
-          &copy; 2024 MeBhiRaja. All rights reserved. | Empowering Students in
-          Surendranagar
-        </p>
-      </div>
     </footer>
 
     <script>
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-
-      // Scroll animation
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".scroll-animate").forEach((el) => {
-        observer.observe(el);
-      });
-
-      // Enrollment function
-      function enrollNow(courseName) {
-        alert(
-          `Thank you for your interest in ${courseName}!\n\nPlease contact us for enrollment details and to secure your seat.\n\nLocation: Surendranagar, Gujarat`
-        );
-      }
-
-      // Contact function
-      function contactUs() {
-        alert(
-          "Contact Information:\n\nLocation: Surendranagar, Gujarat\nOffice Hours: Mon-Sat, 9:00 AM - 8:00 PM\n\nVisit our center for detailed consultation and enrollment!"
-        );
-      }
-
-      // Add dynamic background particles effect
-      function createParticles() {
-        const particles = document.createElement("div");
-        particles.style.position = "fixed";
-        particles.style.top = "0";
-        particles.style.left = "0";
-        particles.style.width = "100%";
-        particles.style.height = "100%";
-        particles.style.pointerEvents = "none";
-        particles.style.zIndex = "-1";
-
-        for (let i = 0; i < 50; i++) {
-          const particle = document.createElement("div");
-          particle.style.position = "absolute";
-          particle.style.width = "2px";
-          particle.style.height = "2px";
-          particle.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-          particle.style.borderRadius = "50%";
-          particle.style.left = Math.random() * 100 + "%";
-          particle.style.top = Math.random() * 100 + "%";
-          particle.style.animation = `float ${
-            3 + Math.random() * 4
-          }s infinite ease-in-out`;
-          particles.appendChild(particle);
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
         }
 
-        document.body.appendChild(particles);
-      }
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
 
-      // Add floating animation
-      const style = document.createElement("style");
-      style.textContent = `
-            @keyframes float {
-                0%, 100% { transform: translateY(0px); }
-                50% { transform: translateY(-10px); }
-            }
-        `;
-      document.head.appendChild(style);
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.scroll-indicator').style.transform = `scaleX(${scrolled / 100})`;
+        });
 
-      // Initialize particles
-      createParticles();
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all academy cards
+        document.querySelectorAll('.academy-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
     </script>
-  </body>
+</body>
 </html>
