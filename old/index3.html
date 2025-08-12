@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEBHIRAJA Institute - Complete Academy Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .brochure-container {
+            width: 8.27in;
+            height: 11.69in;
+            max-width: 794px;
+            max-height: 1123px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 20px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,71,87,0.2), transparent 60%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .institute-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .crown {
+            color: #ff4757;
+            font-size: 2.5rem;
+            margin-right: 12px;
+        }
+
+        .institute-name {
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px 25px;
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ff4757;
+            border-radius: 2px;
+        }
+
+        .academies-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 15px;
+        }
+
+        .academy-card {
+            border-radius: 10px;
+            padding: 16px;
+            background: white;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .academy-card:nth-child(1) { border-left-color: #3498db; }
+        .academy-card:nth-child(2) { border-left-color: #e74c3c; }
+        .academy-card:nth-child(3) { border-left-color: #9b59b6; }
+
+        .academy-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .academy-icon {
+            font-size: 2rem;
+            margin-right: 12px;
+        }
+
+        .academy-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a1a2e;
+            flex: 1;
+        }
+
+        .academy-details {
+            margin-top: 8px;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin: 8px 0;
+        }
+
+        .skill-list li {
+            padding: 4px 0;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 18px;
+            color: #555;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: #ff4757;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-academies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .sub-academy-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .age-info {
+            background: #fff3e0;
+            color: #e65100;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 20px 25px;
+            margin-top: auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: #ff4757;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .phone-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin: 6px 0;
+        }
+
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .demo-info {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-cta {
+            background: #25D366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 8px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .whatsapp-cta:hover {
+            background: #128C7E;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .brochure-container {
+                width: 100%;
+                height: 100%;
+                max-width: none;
+                max-height: none;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .brochure-container {
+                width: 95%;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .academy-details {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="institute-logo">
+                    <span class="crown">👑</span>
+                    <div class="institute-name">MEBHIRAJA INSTITUTE</div>
+                </div>
+                <div class="tagline">The Royal Path to Education & Success</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2 class="section-title">Our 3 Main Royal Academies</h2>
+            
+            <div class="academies-container">
+                <!-- Academy 1 -->
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🏛️</span>
+                        <h3 class="academy-title">MBA/MCA Entrance & Government Job Cracker Academy</h3>
+                    </div>
+                    <div class="academy-details">
+                        <p><strong>Secure Your Future with Top Admissions & Stable Careers</strong></p>
+                        <ul class="skill-list">
+                            <li>MBA/MCA Entrance Exams (CMAT, MAT...) preparation</li>
+                            <li>Banking, Insurance, Railways, SSC exam training</li>
+                            <li>Quantitative aptitude, Reasoning, English, GA/GK</li>
+                            <li>Computer, Banking, Marketing, Descriptive (PO)</li>
+                            <li>Time-saving techniques & mock test mastery</li>
+                        </ul>
+                        <div class="sub-academies">
+                            <span class="sub-academy-tag">MBA/MCA Training</span>
+                            <span class="sub-academy-tag">Govt Job Training</span>
+                            <span class="age-info">Age: 18+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academy 2 -->
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">💼</span>
+                        <h3 class="academy-title">Private Job Cracker Academy</h3>
+                    </div>
+                    <div class="academy-details">
+                        <p><strong>Master High-Demand Skills for Private Sector Success</strong></p>
+                        <ul class="skill-list">
+                            <li>SEBI NISM certification for finance careers</li>
+                            <li>AI-powered digital marketing mastery</li>
+                            <li>Live trading in stocks, forex & crypto</li>
+                            <li>Job-oriented practical training</li>
+                            <li>Industry-ready skills development</li>
+                        </ul>
+                        <div class="sub-academies">
+                            <span class="sub-academy-tag">Financial Academy</span>
+                            <span class="sub-academy-tag">Live Trading</span>
+                            <span class="sub-academy-tag">AI Digital Marketing</span>
+                            <span class="sub-academy-tag">Coding Academy</span>
+                            <span class="age-info">Age: 16-18+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academy 3 -->
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🧠</span>
+                        <h3 class="academy-title">Mind Development Academy</h3>
+                    </div>
+                    <div class="academy-details">
+                        <p><strong>Unlock Mental Powers & Strategic Thinking</strong></p>
+                        <ul class="skill-list">
+                            <li>Chess mastery for strategic thinking</li>
+                            <li>Lightning-fast mental calculation</li>
+                            <li>International competition readiness</li>
+                            <li>Leadership & business acumen</li>
+                            <li>Critical thinking & problem solving</li>
+                        </ul>
+                        <div class="sub-academies">
+                            <span class="sub-academy-tag">Chess Academy</span>
+                            <span class="sub-academy-tag">Vedic Maths & Abacus</span>
+                            <span class="sub-academy-tag">KenKen Championship</span>
+                            <span class="sub-academy-tag">Young CEO</span>
+                            <span class="age-info">Age: 4-12+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>📍 Institute Address</h3>
+                    <div class="contact-details">
+                        101, Galaxy Building,<br>
+                        Opposite Shivam Petrol Pump,<br>
+                        Near Shiv Hotel, Bus Stand Road,<br>
+                        Surendranagar - 363001<br>
+                        Gujarat, India
+                    </div>
+                    <div class="phone-number">📞 +91 9427-406-406</div>
+                    <div style="font-size: 0.9rem; margin-top: 5px;">Bhagirath Sir</div>
+                </div>
+                
+                <div class="cta-section">
+                    <div class="cta-text">🎯 Start Your Royal Journey!</div>
+                    <div class="demo-info">
+                        📅 <strong>Demo Classes: 25 August onwards</strong><br>
+                        🎟️ Limited Seats - Reserve Early!<br>
+                        Transform your passion into expertise
+                    </div>
+                    <a href="https://wa.me/919427406406?text=Hello, My name is " class="whatsapp-cta">
+                        📱 WhatsApp for Free Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add print functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                window.print();
+            }
+        });
+
+        // Add smooth hover effects
+        document.querySelectorAll('.academy-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
