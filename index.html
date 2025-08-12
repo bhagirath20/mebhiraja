@@ -154,7 +154,7 @@
             box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
         }
 
-        /* Academies Section */
+        /* Main Academies Section */
         .academies {
             padding: 60px 0;
             background: #f8f9fa;
@@ -167,101 +167,125 @@
             color: #1a1a2e;
         }
 
-        .academies-grid {
+        .main-academies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .main-academy-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 8px solid;
+        }
+
+        .main-academy-card:nth-child(1) { border-top-color: #3498db; }
+        .main-academy-card:nth-child(2) { border-top-color: #e74c3c; }
+        .main-academy-card:nth-child(3) { border-top-color: #9b59b6; }
+
+        .main-academy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .main-academy-header {
+            text-align: center;
             margin-bottom: 2rem;
         }
 
-        .academy-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 5px solid #ff4757;
-        }
-
-        .academy-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .academy-header {
-            display: flex;
-            align-items: center;
+        .main-academy-icon {
+            font-size: 4rem;
             margin-bottom: 1rem;
         }
 
-        .academy-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-        }
-
-        .academy-title {
-            font-size: 1.3rem;
+        .main-academy-title {
+            font-size: 1.8rem;
             color: #1a1a2e;
             font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
-        .academy-scope {
-            background: #e3f2fd;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            font-style: italic;
+        .main-academy-subtitle {
+            color: #666;
+            font-size: 1rem;
         }
 
-        .benefits-list {
-            list-style: none;
-            margin: 1rem 0;
+        .sub-academies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        /* .benefits-list li {
-            padding: 0.3rem 0;
-            position: relative;
-            padding-left: 1.5rem;
+        .sub-academy {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
         }
 
-     .benefits-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #27ae60;
-            font-weight: bold;
-        }*/
+        .sub-academy:hover {
+            transform: translateY(-3px);
+            background: #e9ecef;
+        }
 
-        .benefits-list li {
-  position: relative;
-  padding-left: 2em; /* space for icon */
-}
+        .sub-academy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
 
-.benefits-list li::before {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-/* Assign icons to each list item 
-.benefits-list li:nth-child(1)::before { content: "📚"; } */
-.benefits-list li:nth-child(1)::before { content: "🎯"; }
-.benefits-list li:nth-child(2)::before { content: "💡"; }
-.benefits-list li:nth-child(3)::before { content: "📈"; }
-.benefits-list li:nth-child(4)::before { content: "🚀"; }
-.benefits-list li:nth-child(5)::before { content: "✨"; }
-.benefits-list li:nth-child(6)::before { content: "🏆"; }
-.benefits-list li:nth-child(7)::before { content: "📅"; }
-
-
-        .age-requirement {
-            background: #fff3e0;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
+        .sub-academy-name {
             font-size: 0.9rem;
-            margin-top: 1rem;
-            border: 2px solid #ff9800;
+            font-weight: bold;
+            color: #1a1a2e;
+            line-height: 1.2;
+        }
+
+        .age-range {
+            background: #fff3e0;
+            color: #e65100;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.8rem;
+            display: inline-block;
+        }
+
+        .key-benefits {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .key-benefits h4 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-item::before {
+            content: "✨";
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            font-size: 0.95rem;
+            color: #333;
         }
 
         /* Demo Section */
@@ -349,126 +373,53 @@
                 max-width: calc(100% - 60px);
             }
 
-            .crown {
-                font-size: 1.8rem;
-                margin-right: 8px;
-            }
-
-            .logo-text {
-                font-size: 1.2rem;
-            }
-
-            .hero {
-                padding: 100px 0 40px;
-            }
-
             .hero h1 {
                 font-size: 2.2rem;
                 line-height: 1.2;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            .academies {
-                padding: 40px 0;
-            }
-
-            .academies-grid {
+            .main-academies-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
             }
 
-            .academy-card {
-                padding: 1.5rem;
+            .main-academy-card {
+                padding: 2rem;
             }
 
-            .academy-title {
-                font-size: 1.1rem;
+            .sub-academies-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
-            .demo-section {
-                padding: 40px 0;
+            .sub-academy {
+                padding: 1rem;
             }
 
-            .demo-content {
-                padding: 0 15px;
-            }
-
-            .contact-info {
-                padding: 1.5rem;
+            .sub-academy-icon {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                font-size: 1rem;
-                max-width: calc(100% - 50px);
-            }
-
-            .crown {
-                font-size: 1.5rem;
-                margin-right: 5px;
-            }
-
-            .logo-text {
-                font-size: 0.9rem;
-            }
-
             .hero h1 {
                 font-size: 1.8rem;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .main-academy-card {
+                padding: 1.5rem;
             }
 
-            .cta-button {
-                padding: 12px 20px;
-                font-size: 1rem;
+            .main-academy-title {
+                font-size: 1.4rem;
             }
 
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .academy-card {
-                padding: 1rem;
-            }
-
-            .academy-icon {
-                font-size: 1.5rem;
-            }
-
-            .academy-title {
-                font-size: 1rem;
-            }
-
-            .demo-date {
-                font-size: 1.2rem;
-            }
-
-            .contact-number {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .logo {
-                font-size: 0.9rem;
-            }
-
-            .logo-text {
-                font-size: 0.8rem;
-            }
-
-            .crown {
-                font-size: 1.3rem;
+            .sub-academies-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -502,253 +453,138 @@
 
     <section id="academies" class="academies">
         <div class="container">
-            <h2 class="section-title">Our Royal Academies</h2>
+            <h2 class="section-title">Our 3 Main Royal Academies</h2>
             
-           
- <div class="academies-grid">
-
-                <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">🏛️</span>
-                        <h3 class="academy-title">Competitive Exam Academy</h3>
+            <div class="main-academies-grid">
+                <!-- Academy 1: MBA/MCA & Government Jobs -->
+                <div class="main-academy-card">
+                    <div class="main-academy-header">
+                        <div class="main-academy-icon">🏛️</div>
+                        <h3 class="main-academy-title">MBA/MCA Entrance & Government Job Academy</h3>
+                        <p class="main-academy-subtitle">Secure Your Future with Top Admissions & Stable Careers</p>
                     </div>
-                    <div class="academy-scope">
-📚 Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (CMAT) and government job exams: Banking, Insurance, Railways, SSC, and more.
+                    
+                    <div class="key-benefits">
+                        <h4>🎯 What You'll Master:</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-text">MBA/MCA entrance exams (CMAT) preparation</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Banking, Insurance, Railways, SSC exam training</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Quantitative aptitude, reasoning & general awareness</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Time-saving techniques & mock test mastery</span>
+                        </div>
                     </div>
-                    <ul class="benefits-list">
-                        <li>Focus: Quantitative aptitude, reasoning, English, general awareness, and computer knowledge with proven time-saving methods.
-</li>
-                        <li>Benefits: Admission to top MBA/MCA programs or stable, high-paying government careers.
-</li>
-                        <li>Advanced Path: Concept mastery → mock test excellence → personalized mentoring.
-</li>
-                        <li>Opportunities: Financial stability, lifelong benefits, and respected career roles.
-</li>
-                        <li>Inspiration: Thousands achieve success yearly through structured preparation.
-</li><li>Ultimate Goal: Secure a dream job or admission through smart, guided preparation.
 
-
-</li>
-                    </ul>
-                    <span class="age-requirement">Age: 18+ years</span>
+                    <div class="sub-academies-grid">
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">🎓</div>
+                            <div class="sub-academy-name">Competitive Exam Training</div>
+                            <div class="age-range">Age: 18+</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">♟️</span>
-                        <h3 class="academy-title">Chess Academy</h3>
+                <!-- Academy 2: Private Job Cracker -->
+                <div class="main-academy-card">
+                    <div class="main-academy-header">
+                        <div class="main-academy-icon">💼</div>
+                        <h3 class="main-academy-title">Private Job Cracker Academy</h3>
+                        <p class="main-academy-subtitle">Master High-Demand Skills for Private Sector Success</p>
                     </div>
-                    <div class="academy-scope"> 📚 Training Scope: From absolute beginners to competitive players aiming for 2000+ FIDE international rating                   
+                    
+                    <div class="key-benefits">
+                        <h4>🚀 Career-Ready Skills:</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-text">NISM certification for finance careers</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">AI-powered digital marketing mastery</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Live trading in stocks, forex & crypto</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Job-oriented practical training</span>
+                        </div>
                     </div>
-                    <ul class="benefits-list">
-                        <li>Focus: Foundations, tournament readiness, and strategy to excel at district, state, and international levels (within 2–4 years). </li>
-                        <li> Recognition & Benefits: Sports quota eligibility, national recognition, confidence for high-level competition.
-</li>
-                        <li> Advanced Path: IM/GM training with partner coaches.
-</li>
-                        <li>Opportunities: Sponsorships, global tournaments, prize money.
-</li>
-                        <li>Inspiration: Champions like Gukesh & Divya Deshmukh started young and reached the world stage.
-</li>
-                        <li>Ultimate Goal: Turn chess passion into a career and global recognition.
 
-</li>
-                    </ul>
-                    <span class="age-requirement">Age: 4+ years</span>
-                </div>
-     
-            
-                <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">💹</span>
-                        <h3 class="academy-title">Financial Academy</h3>
+                    <div class="sub-academies-grid">
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">💹</div>
+                            <div class="sub-academy-name">Financial Academy</div>
+                            <div class="age-range">Age: 18+</div>
+                        </div>
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">📈</div>
+                            <div class="sub-academy-name">Live Trading</div>
+                            <div class="age-range">Age: 18+</div>
+                        </div>
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">🤖</div>
+                            <div class="sub-academy-name">AI Digital Marketing</div>
+                            <div class="age-range">Age: 16+</div>
+                        </div>
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">💻</div>
+                            <div class="sub-academy-name">Coding Academy</div>
+                            <div class="age-range">Age: 16+</div>
+                        </div>
                     </div>
-                    <div class="academy-scope">
-                        📚 Training Scope: Job-oriented training for finance & stock market careers.
-                    </div>
-                    <ul class="benefits-list">
-                        <li> Focus: Stock markets, equity instruments, futures & options, risk management, SEBI regulations, and practical strategies.
-</li>
-                        <li>Recognition & Benefits: Earn the NISM Series VIII (Equity Derivatives) certification- a gateway to finance jobs, advisory roles, and credible personal trading.
-</li>
-                        <li>Advanced Path: Technical & fundamental analysis, options strategies, portfolio management, and advanced finance certifications.
-</li>
-                        <li>Opportunities: High-paying finance careers, advisory business setup, or confident independent trading.
-</li>
-                        <li>Inspiration: Many top portfolio managers and advisors began with NISM certification.
-</li>
-                        <li>Ultimate Goal: Build a certified, profitable, and ethical profession in the stock market.
-
-</li>
-                    </ul>
-                    <span class="age-requirement">Age: 18+ years</span>
-                </div>
-                
-                <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">📈</span>
-                        <h3 class="academy-title">Live Trading Academy</h3>
-                    </div>
-                    <div class="academy-scope">
-                        📚 Training Scope: From absolute beginners to confident live traders in Indian Stock Market, Forex, and Crypto - with real trading practice.
-
-                    </div>
-                    <ul class="benefits-list">
-                        <li>Focus: Price action, technical analysis, indicators, risk management, and trading psychology.
-</li>
-                        <li>Benefits: Learn to generate income, trade multiple asset classes, and operate confidently in both regulated and emerging markets.
-</li>
-                        <li>Advanced Path: From demo trading to profitable live systems across stocks, currency pairs, and crypto.
-</li>
-                        <li>Opportunities: Financial independence, global market participation, and diversified income.
-</li>
-                        <li>Inspiration: Many top traders began small but built wealth through skill and discipline.
-</li>
-
-                                                               <li>Ultimate Goal: Achieve consistent, disciplined, profitable trading.
-
-
-</li> 
-                    </ul>
-                    <span class="age-requirement">Age: 18+ years</span>
                 </div>
 
-                <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">🤖</span>
-                        <h3 class="academy-title">AI Digital Marketing Academy</h3>
+                <!-- Academy 3: Mind Development -->
+                <div class="main-academy-card">
+                    <div class="main-academy-header">
+                        <div class="main-academy-icon">🧠</div>
+                        <h3 class="main-academy-title">Mind Development Academy</h3>
+                        <p class="main-academy-subtitle">Unlock Mental Powers & Strategic Thinking</p>
                     </div>
-                    <div class="academy-scope">
-                       📚 Training Scope: Job-oriented training, suitable for job seekers, business owners, housewives, etc.
-
+                    
+                    <div class="key-benefits">
+                        <h4>🌟 Mental Superpowers:</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Chess mastery for strategic thinking</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Lightning-fast mental calculation</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">International competition readiness</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-text">Leadership & business acumen</span>
+                        </div>
                     </div>
-                    <ul class="benefits-list">
-                        <li>From basics to full-stack AI-powered marketing- SEO, social media, ads, email, analytics, and automation.
-</li>
-                        <li>Focus: AI tools for high-converting campaigns, workflow automation, and multi-channel optimization.
-</li>
-                        <li>Benefits: High-paying jobs, freelance income, and entrepreneurship opportunities.
-</li>
-                        <li>Advanced Path: From basic campaigns to AI-driven analytics, content automation, and scaling strategies.
-</li>
-                        <li>Opportunities: Global client work, personal brand building, and future-proof careers.
-</li>
-                        <li>Inspiration: The fastest-growing digital marketing careers belong to AI-driven professionals.
-</li>
 
-                  <li> Ultimate Goal: Master AI-powered marketing for career growth and financial independence.</li>
-
-     
-                    </ul>
-                    <span class="age-requirement">Age: 16+ years</span>
+                    <div class="sub-academies-grid">
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">♟️</div>
+                            <div class="sub-academy-name">Chess Academy</div>
+                            <div class="age-range">Age: 4+</div>
+                        </div>
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">🧮</div>
+                            <div class="sub-academy-name">Vedic Maths & Abacus</div>
+                            <div class="age-range">Age: 5+</div>
+                        </div>
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">🏆</div>
+                            <div class="sub-academy-name">KenKen Championship</div>
+                            <div class="age-range">Std: 3-9</div>
+                        </div>
+                        <div class="sub-academy">
+                            <div class="sub-academy-icon">👔</div>
+                            <div class="sub-academy-name">Young CEO</div>
+                            <div class="age-range">Age: 12+</div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">🧮</span>
-                        <h3 class="academy-title">Vedic Maths & Abacus Academy</h3>
-                    </div>
-                    <div class="academy-scope">
-📚 Training Scope: From absolute beginners to advanced mental calculation experts using Vedic Maths shortcuts and the Abacus method.
-                    </div>
-                    <ul class="benefits-list">
-                        <li>Focus: Develop lightning-fast calculation skills, improve concentration, memory power, and accuracy- without over-reliance on calculators.
-</li>
-                        <li>Recognition & Benefits: Enhanced academic performance, competitive exam advantage, improved problem-solving confidence, and stronger logical thinking.
-</li>
-                        <li>Advanced Path: Progress from basic counting and operations to complex arithmetic, algebraic concepts, and rapid mental math mastery.
-</li>
-                        <li>Opportunities: Excel in school, competitive exams, and everyday problem-solving- saving time and boosting confidence.
-</li>
-                        <li>Inspiration: Many top-performing students and math competition winners use Vedic Maths & Abacus techniques for speed and accuracy.
-</li>
-
-                        <li>Ultimate Goal: Transform math from a fear into a lifelong strength and competitive edge. </li>
-                    </ul>
-                    <span class="age-requirement">Age: 5+ years</span>
-                </div>
-                
-                
-
-                <!-- <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">🔢</span>
-                        <h3 class="academy-title">KenKen India Academy</h3>
-                    </div>
-                    <div class="academy-scope">
-📚 Training Scope – Step-by-step coaching from beginner to international-level KenKen solver, covering puzzle strategies, time management, and competitive readiness for all age divisions (Delta, Kappa).
-
-                    </div>
-                    <ul class="benefits-list">
-                        <li>Focus: Master competitive KenKen solving with speed and accuracy across all stages: School, City, State, National, and International.
-
-</li>
-                        <li>Benefits: Sharpen logic, boost mental math, improve exam performance, and earn certificates, medals, and recognition.
-
-</li>
-                        <li>Advanced Path: Progress from simple 3×3 puzzles to complex 9×9 grids with all operations under strict time limits.
-
-</li>
-                        <li>Opportunitie: Win prizes, medals, cash rewards, and qualify for the International KenKen Championship in Dubai or online.
-
-</li>
-                        <li>Inspiration: Join a community of puzzle champions admired for their sharp thinking and problem-solving mastery.
-
-</li>
-
-                        <li>Ultimate Goal: Transform logical reasoning into a lifelong advantage for academics, careers, and global competition success.
-
-                    </ul>
-                    <span class="age-requirement"> 📅 Eligibility: Standard 3 to 9 </span>
-                </div>               -->
-            
-                <div class="academy-card">
-    <div class="academy-header">
-        <span class="academy-icon">🔢</span>
-        <h3 class="academy-title">🏆 KenKen India Championship Academy</h3>
-    </div>
-    <div class="academy-scope">
-        📚 Training Scope – Step-by-step coaching from beginner to international-level KenKen solver, covering puzzle strategies, time management, and competitive readiness for all age divisions. From your first KenKen puzzle to representing India on the world stage!
-    </div>
-    <ul class="benefits-list">
-        <li><strong>School Round:</strong> 4 puzzles / 20 mins → 1 correct to qualify. 🎁 Certificate</li>
-        <li><strong>City Round:</strong> 6 puzzles / 30 mins → 2 correct. 🎁 Certificate + 🥉 Bronze Medal</li>
-        <li><strong>State Round:</strong> 6 puzzles / 30 mins → 4 correct. 🎁 Certificate + 🥈 Silver Medal</li>
-        <li><strong>National Round:</strong> 6 puzzles / 30 mins → All correct + fastest time. 🎁 Certificate + 🥇 Gold Medal + ✈️ Dubai Trip + 💰 Cash Prizes</li>
-        <li><strong>International Round:</strong> Larger grids, intense speed & accuracy challenges.</li>
-        <li><strong>Age Divisions:</strong> Delta (Std 3–5, small grids, basic ops) • Kappa (Std 6–9, mid grids, all ops) • Sigma (Senior category)</li>
-    </ul>
-    <span class="age-requirement">📅 Eligibility: Standard 3 to 9</span>
-</div>
-       
-
-
-            <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">💼</span>
-                        <h3 class="academy-title">Young CEO Academy</h3>
-                    </div>
-                    <div class="academy-scope">
-Training Scope: From curious beginners to confident leaders with business skills, financial literacy, and strategic thinking.
-                    </div>
-                    <ul class="benefits-list">
-                        <li>Focus: Business planning, marketing, negotiation, decision-making, and leadership.
-</li>
-                        <li>Benefits: Competitive advantage in academics, careers, and entrepreneurship.
-</li>
-                        <li>Advanced Path: Simulated companies, investor presentations, and small live projects.
-</li>
-                        <li>Opportunities: Networking, mentorship, and real-world entrepreneurial exposure.
-</li>
-                        <li>Inspiration: Many of today’s youngest CEOs started early- thinking big, acting smart.
-</li>
-                        <li>Ultimate Goal: Transform creativity and leadership into a successful business or career.
-
-</li>
-                    </ul>
-                    <span class="age-requirement">Age: 12+ years</span>
-                </div>
-        </div>
+            </div>
         </div>
     </section>
 
@@ -822,11 +658,19 @@ Training Scope: From curious beginners to confident leaders with business skills
         }, observerOptions);
 
         // Observe all academy cards
-        document.querySelectorAll('.academy-card').forEach(card => {
+        document.querySelectorAll('.main-academy-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
+        });
+
+        // Add click interactions for sub-academies
+        document.querySelectorAll('.sub-academy').forEach(academy => {
+            academy.addEventListener('click', function() {
+                const academyName = this.querySelector('.sub-academy-name').textContent;
+                alert(`Learn more about ${academyName} - Contact us for detailed information!`);
+            });
         });
     </script>
 </body>
