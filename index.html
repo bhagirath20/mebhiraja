@@ -218,19 +218,41 @@
             margin: 1rem 0;
         }
 
-        .benefits-list li {
+        /* .benefits-list li {
             padding: 0.3rem 0;
             position: relative;
             padding-left: 1.5rem;
         }
 
-        .benefits-list li::before {
+     .benefits-list li::before {
             content: '✓';
             position: absolute;
             left: 0;
             color: #27ae60;
             font-weight: bold;
-        }
+        }*/
+
+        .benefits-list li {
+  position: relative;
+  padding-left: 2em; /* space for icon */
+}
+
+.benefits-list li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Assign icons to each list item */
+.benefits-list li:nth-child(1)::before { content: "📚"; }
+.benefits-list li:nth-child(2)::before { content: "🎯"; }
+.benefits-list li:nth-child(3)::before { content: "💡"; }
+.benefits-list li:nth-child(4)::before { content: "📈"; }
+.benefits-list li:nth-child(5)::before { content: "🚀"; }
+.benefits-list li:nth-child(6)::before { content: "✨"; }
+.benefits-list li:nth-child(7)::before { content: "🏆"; }
+.benefits-list li:nth-child(8)::before { content: "📅"; }
+
 
         .age-requirement {
             background: #fff3e0;
@@ -488,14 +510,13 @@
                         <span class="academy-icon">♟️</span>
                         <h3 class="academy-title">Chess Academy</h3>
                     </div>
-                    <div class="academy-scope">
-                    Training Scope: From absolute beginners to competitive players aiming for 2000+ FIDE international rating                   
+                    <div class="academy-scope"> 📚 Training Scope: From absolute beginners to competitive players aiming for 2000+ FIDE international rating                   
                     </div>
                     <ul class="benefits-list">
-                        <li>Focus: Foundations, tournament readiness, and strategy to excel at district, state, and international levels (within 2–4 years). </li>
-                        <li>Recognition & Benefits: Sports quota eligibility, national recognition, confidence for high-level competition.
+                        <li>🎯 Focus: Foundations, tournament readiness, and strategy to excel at district, state, and international levels (within 2–4 years). </li>
+                        <li> 💡 Recognition & Benefits: Sports quota eligibility, national recognition, confidence for high-level competition.
 </li>
-                        <li>Advanced Path: IM/GM training with partner coaches.
+                        <li> 📈 Advanced Path: IM/GM training with partner coaches.
 </li>
                         <li>Opportunities: Sponsorships, global tournaments, prize money.
 </li>
@@ -514,7 +535,7 @@
                         <h3 class="academy-title">Competitive Exam Academy</h3>
                     </div>
                     <div class="academy-scope">
-Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (CMAT) and government job exams: Banking, Insurance, Railways, SSC, and more.
+📚 Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (CMAT) and government job exams: Banking, Insurance, Railways, SSC, and more.
                     </div>
                     <ul class="benefits-list">
                         <li>Focus: Quantitative aptitude, reasoning, English, general awareness, and computer knowledge with proven time-saving methods.
@@ -540,7 +561,7 @@ Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (C
                         <h3 class="academy-title">Financial Academy</h3>
                     </div>
                     <div class="academy-scope">
-                        Training Scope: Job-oriented training for finance & stock market careers.
+                        📚 Training Scope: Job-oriented training for finance & stock market careers.
                     </div>
                     <ul class="benefits-list">
                         <li> Focus: Stock markets, equity instruments, futures & options, risk management, SEBI regulations, and practical strategies.
@@ -566,7 +587,7 @@ Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (C
                         <h3 class="academy-title">Live Trading Academy</h3>
                     </div>
                     <div class="academy-scope">
-                        Training Scope: From absolute beginners to confident live traders in Indian Stock Market, Forex, and Crypto - with real trading practice.
+                        📚 Training Scope: From absolute beginners to confident live traders in Indian Stock Market, Forex, and Crypto - with real trading practice.
 
                     </div>
                     <ul class="benefits-list">
@@ -595,7 +616,7 @@ Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (C
                         <h3 class="academy-title">AI Digital Marketing Academy</h3>
                     </div>
                     <div class="academy-scope">
-                        Training Scope: Job-oriented training, suitable for job seekers, business owners, housewives, etc.
+                       📚 Training Scope: Job-oriented training, suitable for job seekers, business owners, housewives, etc.
 
                     </div>
                     <ul class="benefits-list">
@@ -625,7 +646,7 @@ Training Scope: From basics to advanced strategies for MBA/MCA Entrance Exams (C
                         <h3 class="academy-title">Vedic Maths & Abacus Academy</h3>
                     </div>
                     <div class="academy-scope">
-Training Scope: From absolute beginners to advanced mental calculation experts using Vedic Maths shortcuts and the Abacus method.
+📚 Training Scope: From absolute beginners to advanced mental calculation experts using Vedic Maths shortcuts and the Abacus method.
                     </div>
                     <ul class="benefits-list">
                         <li>Focus: Develop lightning-fast calculation skills, improve concentration, memory power, and accuracy — without over-reliance on calculators.
@@ -675,28 +696,28 @@ Training Scope: From absolute beginners to advanced mental calculation experts u
                         <li>🏆 Ultimate Goal – Transform logical reasoning into a lifelong advantage for academics, careers, and global competition success.
 
                     </ul>
-                    <span class="age-requirement"> Standard 3 to 9 </span>
+                    <span class="age-requirement"> 📅 Eligibility: Standard 3 to 9 </span>
                 </div>               
-             <div class="academy-card">
-                    <div class="academy-header">
-                        <span class="academy-icon">🔢</span>
-                        <h3 class="academy-title">🏆 KenKen India Competition Pathway</h3>
-                    </div>
-                    <div class="academy-scope">
-Your route from school puzzles to the International Championship!
-                    </div>
-                    <ul class="benefits-list">
-                        <li>Stages => School: 4 puzzles / 20 mins → 1 correct to qualify. Certificates 🎁</li>
-                        <li>City: 6 puzzles / 30 mins → 2 correct to qualify. Certificates 🎁 + Bronze Medal </li>
-                        <li>State: 6 puzzles / 30 mins → 4 correct to qualify.  Certificates 🎁 + Silver  Medal</li>
-                        <li>National: 6 puzzles / 30 mins → All correct + fastest time to qualify. Certificates 🎁 + Gold  Medal + Dubai Trip, Cash Prizes </li>
-                        <li>International: Larger grids, speed + accuracy</li>
-                         <li>Age Divisions => Delta: Small grids (std 3 to 5) , basic operations </li>
-                        <li>Kappa: Mid grids (std 6 to 9), all operations
-</li>
-                    </ul>
-                    <span class="age-requirement"> Standard 3 to 9 </span>
-                </div>           
+            
+                <div class="academy-card">
+    <div class="academy-header">
+        <span class="academy-icon">🔢</span>
+        <h3 class="academy-title">🏆 KenKen India Championship Academy</h3>
+    </div>
+    <div class="academy-scope">
+        From your first KenKen puzzle to representing India on the world stage!
+    </div>
+    <ul class="benefits-list">
+        <li><strong>School Round:</strong> 4 puzzles / 20 mins → 1 correct to qualify. 🎁 Certificate</li>
+        <li><strong>City Round:</strong> 6 puzzles / 30 mins → 2 correct. 🎁 Certificate + 🥉 Bronze Medal</li>
+        <li><strong>State Round:</strong> 6 puzzles / 30 mins → 4 correct. 🎁 Certificate + 🥈 Silver Medal</li>
+        <li><strong>National Round:</strong> 6 puzzles / 30 mins → All correct + fastest time. 🎁 Certificate + 🥇 Gold Medal + ✈️ Dubai Trip + 💰 Cash Prizes</li>
+        <li><strong>International Round:</strong> Larger grids, intense speed & accuracy challenges.</li>
+        <li><strong>Age Divisions:</strong> Delta (Std 3–5, small grids, basic ops) • Kappa (Std 6–9, mid grids, all ops) • Sigma (Senior category)</li>
+    </ul>
+    <span class="age-requirement">📅 Eligibility: Standard 3 to 9</span>
+</div>
+       
 
 
             <div class="academy-card">
