@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>મેભીરાજા સંસ્થા - સંપૂર્ણ એકેડમી માર્ગદર્શિકા</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Gujarati', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .brochure-container {
+            width: 8.27in;
+            height: 11.69in;
+            max-width: 794px;
+            max-height: 1123px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 20px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,71,87,0.2), transparent 60%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .institute-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .crown {
+            color: #ff4757;
+            font-size: 2.5rem;
+            margin-right: 12px;
+        }
+
+        .institute-name {
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px 25px;
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ff4757;
+            border-radius: 2px;
+        }
+
+        .academies-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 15px;
+        }
+
+        .academy-card {
+            border-radius: 10px;
+            padding: 16px;
+            background: white;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .academy-card:nth-child(1) { border-left-color: #3498db; }
+        .academy-card:nth-child(2) { border-left-color: #e74c3c; }
+        .academy-card:nth-child(3) { border-left-color: #9b59b6; }
+
+        .academy-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .academy-icon {
+            font-size: 2rem;
+            margin-right: 12px;
+        }
+
+        .academy-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a1a2e;
+            flex: 1;
+        }
+
+        .academy-details {
+            margin-top: 8px;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin: 8px 0;
+        }
+
+        .skill-list li {
+            padding: 4px 0;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 18px;
+            color: #555;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: #ff4757;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-academies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .sub-academy-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .age-info {
+            background: #fff3e0;
+            color: #e65100;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 20px 25px;
+            margin-top: auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: #ff4757;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .phone-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin: 6px 0;
+        }
+
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .demo-info {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-cta {
+            background: #25D366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 8px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .whatsapp-cta:hover {
+            background: #128C7E;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .brochure-container {
+                width: 100%;
+                height: 100%;
+                max-width: none;
+                max-height: none;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .brochure-container {
+                width: 95%;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .academy-details {
+                margin-left: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="brochure-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="institute-logo">
+                    <span class="crown">👑</span>
+                    <div class="institute-name">મેભીરાજા સંસ્થા</div>
+                </div>
+                <div class="tagline">શિક્ષણ અને સફળતાનો રાજસી માર્ગ</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2 class="section-title">અમારી 3 મુખ્ય રાજસી એકેડમીઓ</h2>
+            
+            <div class="academies-container">
+                <!-- Academy 1 -->
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🏛️</span>
+                        <h3 class="academy-title">MBA/MCA પ્રવેશ અને સરકારી નોકરી ક્રેકર એકેડમી</h3>
+                    </div>
+                    <div class="academy-details">
+                        <p><strong>ટોચના પ્રવેશ અને સ્થિર કારકિર્દી સાથે તમારું ભવિષ્ય સુરક્ષિત કરો</strong></p>
+                        <ul class="skill-list">
+                            <li>MBA/MCA પ્રવેશ પરીક્ષાઓ (CMAT, MAT...) તૈયારી</li>
+                            <li>બેંકિંગ, વીમો, રેલ્વે, SSC પરીક્ષા તાલીમ</li>
+                            <li>ગણિત, તર્કશાસ્ત્ર, અંગ્રેજી, સામાન્ય જ્ઞાન</li>
+                            <li>કોમ્પ્યુટર, બેંકિંગ, વર્ણનાત્મક (PO), સામૂહિક ચર્ચા, વ્યક્તિગત ઇન્ટરવ્યુ</li>
+                            <li>સમય બચાવવાની તકનીકો અને મોક ટેસ્ટ માહિરી</li>
+                        </ul>
+                        <div class="sub-academies">
+                            <span class="sub-academy-tag">MBA/MCA તાલીમ</span>
+                            <span class="sub-academy-tag">સરકારી નોકરી તાલીમ</span>
+                            <span class="age-info">ઉંમર: 18+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academy 2 -->
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">💼</span>
+                        <h3 class="academy-title">ખાનગી નોકરી ક્રેકર એકેડમી</h3>
+                    </div>
+                    <div class="academy-details">
+                        <p><strong>ખાનગી ક્ષેત્રની સફળતા માટે ઉચ્ચ માંગવાળી કુશળતા શીખો</strong></p>
+                        <ul class="skill-list">
+                            <li>ફાઇનાન્સ કારકિર્દી માટે SEBI NISM પ્રમાણપત્ર</li>
+                            <li>AI-પાવર્ડ ડિજિટલ માર્કેટિંગ માહિરી</li>
+                            <li>સ્ટોક, ફોરેક્સ અને ક્રિપ્ટોમાં લાઇવ ટ્રેડિંગ</li>
+                            <li>નોકરી-લક્ષિત પ્રાયોગિક તાલીમ</li>
+                            <li>ઉદ્યોગ-તૈયાર કુશળતા વિકાસ</li>
+                        </ul>
+                        <div class="sub-academies">
+                            <span class="sub-academy-tag">ફાઇનાન્સિયલ એકેડમી</span>
+                            <span class="sub-academy-tag">લાઇવ ટ્રેડિંગ</span>
+                            <span class="sub-academy-tag">AI ડિજિટલ માર્કેટિંગ</span>
+                            <span class="sub-academy-tag">કોડિંગ એકેડમી</span>
+                            <span class="age-info">ઉંમર: 16-18+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academy 3 -->
+                <div class="academy-card">
+                    <div class="academy-header">
+                        <span class="academy-icon">🧠</span>
+                        <h3 class="academy-title">મન વિકાસ એકેડમી</h3>
+                    </div>
+                    <div class="academy-details">
+                        <p><strong>માનસિક શક્તિ અને વ્યૂહાત્મક વિચારસરણીને અનલોક કરો</strong></p>
+                        <ul class="skill-list">
+                            <li>વ્યૂહાત્મક વિચારસરણી માટે બુદ્ધિ શતરંજ માહિરી</li>
+                            <li>વીજળીની જેમ ઝડપી માનસિક ગણતરી</li>
+                            <li>આંતરરાષ્ટ્રીય સ્પર્ધા તૈયારી</li>
+                            <li>નેતૃત્વ અને વ્યવસાયિક બુદ્ધિ</li>
+                            <li>વિવેચનાત્મક વિચારસરણી અને સમસ્યા ઉકેલવાની કુશળતા</li>
+                        </ul>
+                        <div class="sub-academies">
+                            <span class="sub-academy-tag">શતરંજ એકેડમી</span>
+                            <span class="sub-academy-tag">વૈદિક ગણિત અને એબેકસ</span>
+                            <span class="sub-academy-tag">કેનકેન ચૅમ્પિયનશિપ</span>
+                            <span class="sub-academy-tag">યંગ CEO</span>
+                            <span class="age-info">ઉંમર: 4-12+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>📍 સંસ્થાનું સરનામું</h3>
+                    <div class="contact-details">
+                        ૧૦૧, ગેલેક્સી બિલ્ડિંગ,<br>
+                        શિવમ પેટ્રોલ પંપની સામે,<br>
+                        શિવ હોટેલ પાસે, બસ સ્ટેન્ડ રોડ,<br>
+                        સુરેન્દ્રનગર - ૩૬૩૦૦૧<br>
+                        ગુજરાત, ભારત
+                    </div>
+                    <div class="phone-number">📞 +૯૧ ૯૪૨૭-૪૦૬-૪૦૬</div>
+                    <div style="font-size: 0.9rem; margin-top: 5px;">ભગીરથ સાહેબ</div>
+                </div>
+                
+                <div class="cta-section">
+                    <div class="cta-text">🎯 તમારી રાજસી યાત્રા શરૂ કરો!</div>
+                    <div class="demo-info">
+                        📅 <strong>ડેમો ક્લાસ: ૨૫ ઓગસ્ટથી</strong><br>
+                        🎟️ મર્યાદિત સીટ - જલ્દી બુક કરો!<br>
+                        તમારા શોખને કુશળતામાં રૂપાંતરિત કરો
+                    </div>
+                    <a href="https://wa.me/919427406406?text=નમસ્તે, મારું નામ " class="whatsapp-cta">
+                        📱 ફ્રી ડેમો માટે વોટ્સએપ કરો
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add print functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                window.print();
+            }
+        });
+
+        // Add smooth hover effects
+        document.querySelectorAll('.academy-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
