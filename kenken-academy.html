@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KenKen Championship - MEBHIRAJA Institute</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .crown {
+            color: #ff4757;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .back-button {
+            background: linear-gradient(45deg, #ff4757, #ff6b7a);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🧮';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            background: #ff4757;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .registration-alert {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            display: inline-block;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: 3px solid white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a2e;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .highlight-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Rules Section */
+        .rules-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .rules-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rule-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-left: 5px solid #f39c12;
+        }
+
+        .rule-number {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .rule-text {
+            font-size: 1.05rem;
+            color: #333;
+        }
+
+        .rule-subtext {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 8px solid;
+        }
+
+        .category-card:nth-child(1) { border-top-color: #3498db; }
+        .category-card:nth-child(2) { border-top-color: #e74c3c; }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .category-grades {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* Rounds Section */
+        .rounds-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .rounds-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .round-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border-left: 6px solid;
+            transition: transform 0.3s;
+        }
+
+        .round-card:hover {
+            transform: translateX(10px);
+        }
+
+        .round-card:nth-child(1) { border-left-color: #2ecc71; }
+        .round-card:nth-child(2) { border-left-color: #3498db; }
+        .round-card:nth-child(3) { border-left-color: #9b59b6; }
+        .round-card:nth-child(4) { border-left-color: #f39c12; }
+        .round-card:nth-child(5) { border-left-color: #e74c3c; }
+
+        .round-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .round-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .round-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .round-details {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 1rem;
+        }
+
+        .round-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Message Section */
+        .message-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .message-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 8px solid #f39c12;
+        }
+
+        .message-title {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .message-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-list {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-item::before {
+            content: "✓";
+            color: #f39c12;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Sample Puzzle Section */
+        .puzzle-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .puzzle-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: #333;
+            padding: 2px;
+            max-width: 300px;
+            margin: 2rem auto;
+            border: 3px solid #f39c12;
+        }
+
+        .puzzle-cell {
+            background: white;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .cage-label {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 0.7rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: #333;
+            padding: 2px;
+            max-width: 300px;
+            margin: 2rem auto;
+            border: 3px solid #f39c12;
+        }
+
+        .puzzle-cell {
+            background: white;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .cage-label {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 0.7rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 3x3 Puzzle Grid */
+        .puzzle-grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 0;
+            border: 4px solid #1a1a2e;
+            background: white;
+        }
+
+        .puzzle-cell-3x3 {
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .cage-label-3x3 {
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+
+        /* Cage Colors */
+        .cage-red {
+            background: rgba(231, 76, 60, 0.15);
+        }
+
+        .cage-blue {
+            background: rgba(52, 152, 219, 0.15);
+        }
+
+        .cage-green {
+            background: rgba(46, 204, 113, 0.15);
+        }
+
+        .cage-purple {
+            background: rgba(155, 89, 182, 0.15);
+        }
+
+        .cage-yellow {
+            background: rgba(241, 196, 15, 0.15);
+        }
+
+        /* Legend */
+        .cage-legend {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .legend-box {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 2rem auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .contact-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1a1a2e;
+            margin: 1.5rem 0;
+        }
+
+        .contact-address {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+
+        .youtube-link {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .youtube-link:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .round-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .message-box,
+            .contact-card,
+            .puzzle-container {
+                padding: 2rem;
+            }
+
+            .contact-number {
+                font-size: 1.5rem;
+            }
+
+            .puzzle-grid-3x3 {
+                grid-template-columns: repeat(3, 60px);
+                grid-template-rows: repeat(3, 60px);
+            }
+
+            .cage-legend {
+                width: 100%;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <span class="crown">👑</span>
+                <span>MEBHIRAJA INSTITUTE</span>
+            </div>
+            <a href="index.html" class="back-button">← Back to Home</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-icon">🏆</div>
+            <h1>KENKEN INDIA</h1>
+            <p class="hero-tagline">International KenKen Maths Puzzle Olympiad</p>
+            <p class="hero-subtitle">World's Largest Mathematical Puzzle Championship</p>
+            <div class="grade-badge">Grades 3 to 9 | Organized through Schools</div>
+            <div class="registration-alert">🗓 Last Date: 11 NOVEMBER</div>
+            <p style="font-size: 1.2rem; margin-top: 1.5rem;">✨ Free Demo, Preparation, and Guidance</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="highlight-box">
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Competition Highlights</h2>
+                <p class="highlight-text">This competition is designed for school students through mathematical puzzles to enhance their logical and mathematical abilities. Students will develop problem-solving skills, critical thinking, and mathematical reasoning through engaging KenKen puzzles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules-section">
+        <div class="container">
+            <h2 class="section-title">Puzzle Solving Rules</h2>
+            <div class="rules-list">
+                <div class="rule-item">
+                    <div class="rule-number">1</div>
+                    <div>
+                        <div class="rule-text">Each box must contain a unique number.</div>
+                    </div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-number">2</div>
+                    <div>
+                        <div class="rule-text">No number should be repeated in any row or column.</div>
+                    </div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-number">3</div>
+                    <div>
+                        <div class="rule-text">Depending on the grid size (3×3 → 1 to 3, 4×4 → 1 to 4, etc.), use the appropriate range of numbers.</div>
+                    </div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-number">4</div>
+                    <div>
+                        <div class="rule-text">Each bold-outlined group of boxes is called a "Cage."</div>
+                        <div class="rule-subtext">
+                            • Each cage has a target number and a mathematical operation (+, –, ×, ÷).<br>
+                            • The numbers within the cage must result in the target number using the given operation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-number">5</div>
+                    <div>
+                        <div class="rule-text">Fill all empty boxes correctly to complete the puzzle.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Participant Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🎓</div>
+                    <div class="category-title">Junior Category</div>
+                    <div class="category-grades">Grades 3 to 5</div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🏅</div>
+                    <div class="category-title">Senior Category</div>
+                    <div class="category-grades">Grades 6 to 9</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rounds-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Participation Rounds & Fees</h2>
+            <div class="rounds-timeline">
+                <div class="round-card">
+                    <div class="round-header">
+                        <div class="round-title">1️⃣ School Round</div>
+                        <div class="round-badge">October–November</div>
+                    </div>
+                    <div class="round-details">
+                        <div class="round-detail-item">💰 Fee: <strong>FREE</strong></div>
+                        <div class="round-detail-item">⏱️ Time: 30 minutes</div>
+                    </div>
+                </div>
+
+                <div class="round-card">
+                    <div class="round-header">
+                        <div class="round-title">2️⃣ City Round</div>
+                        <div class="round-badge">November–December</div>
+                    </div>
+                    <div class="round-details">
+                        <div class="round-detail-item">💰 Fee: ₹500</div>
+                        <div class="round-detail-item">⏱️ Time: 30 minutes</div>
+                    </div>
+                </div>
+
+                <div class="round-card">
+                    <div class="round-header">
+                        <div class="round-title">3️⃣ State Round</div>
+                        <div class="round-badge">December–January</div>
+                    </div>
+                    <div class="round-details">
+                        <div class="round-detail-item">💰 Fee: ₹650</div>
+                        <div class="round-detail-item">⏱️ Time: 30 minutes</div>
+                    </div>
+                </div>
+
+                <div class="round-card">
+                    <div class="round-header">
+                        <div class="round-title">4️⃣ National Round</div>
+                        <div class="round-badge">February</div>
+                    </div>
+                    <div class="round-details">
+                        <div class="round-detail-item">💰 Fee: ₹750</div>
+                        <div class="round-detail-item">🏅 Gold Medal + Certificate</div>
+                        <div class="round-detail-item">⏱️ Time: 30 minutes</div>
+                    </div>
+                </div>
+
+                <div class="round-card">
+                    <div class="round-header">
+                        <div class="round-title">5️⃣ International Finals (Dubai)</div>
+                        <div class="round-badge">Top National Scorers</div>
+                    </div>
+                    <div class="round-details">
+                        <div class="round-detail-item">🌍 Location: Dubai</div>
+                        <div class="round-detail-item">⏱️ Time: 30 minutes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="message-section">
+        <div class="container">
+            <div class="message-box">
+                <p class="message-title">Respected Parents, School Principals, and Trustees,</p>
+                <p class="message-text">You can contact us to register your students and coordinate with your school. If registration is done through the school, the State/National-level exams will be conducted within the school premises.</p>
+                
+                <div class="benefit-list">
+                    <div class="benefit-item">If your school wishes to become an official center, we welcome you to participate.</div>
+                    <div class="benefit-item">One teacher from the school can be trained free of cost.</div>
+                    <div class="benefit-item">Students get free demo classes, preparation materials, and expert guidance.</div>
+                </div>
+
+                <p class="message-text" style="font-size: 1.3rem; color: #e74c3c; font-weight: bold; text-align: center; margin-top: 2rem;">
+                    🗓 Last Date for Registration: 11 NOVEMBER
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="puzzle-section">
+        <div class="container">
+            <h2 class="section-title">Try a Sample Puzzle (3×3)</h2>
+            <div class="puzzle-container">
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Here's how a KenKen puzzle looks:</p>
+                
+                <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0;">
+                    <!-- Puzzle Grid -->
+                    <div style="position: relative;">
+                        <div class="puzzle-grid-3x3">
+                            <!-- Row 1 -->
+                            <div class="puzzle-cell-3x3 cage-red" style="border-right: 3px solid #e74c3c;">
+                                <span class="cage-label-3x3">6+</span>
+                            </div>
+                            <div class="puzzle-cell-3x3 cage-red" style="border-bottom: 3px solid #e74c3c;">
+                            </div>
+                            <div class="puzzle-cell-3x3 cage-blue">
+                                <span class="cage-label-3x3">2÷</span>
+                            </div>
+                            
+                            <!-- Row 2 -->
+                            <div class="puzzle-cell-3x3 cage-green">
+                                <span class="cage-label-3x3">3×</span>
+                            </div>
+                            <div class="puzzle-cell-3x3 cage-red" style="border-right: 3px solid #e74c3c;">
+                            </div>
+                            <div class="puzzle-cell-3x3 cage-blue">
+                            </div>
+                            
+                            <!-- Row 3 -->
+                            <div class="puzzle-cell-3x3 cage-green">
+                            </div>
+                            <div class="puzzle-cell-3x3 cage-purple">
+                                <span class="cage-label-3x3">2-</span>
+                            </div>
+                            <div class="puzzle-cell-3x3 cage-purple">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Legend -->
+                    <div class="cage-legend">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: #1a1a2e;">Cage Examples:</h4>
+                        <div class="legend-item">
+                            <div class="legend-box cage-red"></div>
+                            <span><strong>6+</strong> Cage: Numbers add to 6</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box cage-blue"></div>
+                            <span><strong>2÷</strong> Cage: Divide to get 2</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box cage-green"></div>
+                            <span><strong>3×</strong> Cage: Multiply to get 3</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box cage-purple"></div>
+                            <span><strong>2-</strong> Cage: Subtract to get 2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="color: #666; font-size: 1.05rem; margin-top: 1.5rem;">
+                    <strong>Instructions:</strong> Fill numbers 1-3 in each row and column (no repeats). Each colored cage must meet its target using the given operation!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Register Now & Learn More</h2>
+            <div class="contact-card">
+                <p class="contact-name">📞 Contact / WhatsApp Director – Bhagirath Pancholi</p>
+                <div class="contact-number">+91 9427 406 406</div>
+                
+                <div class="contact-address">
+                    🏢 101, Galaxy Building, Near Shilp Petrol Pump,<br>
+                    Beside Shiv Hotel, Bus Stand Road,<br>
+                    Surendranagar – 363002
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">📺 Watch detailed videos and guides:</p>
+                    <a href="https://www.youtube.com/@Mebhirajainstitute" target="_blank" class="youtube-link">
+                        YouTube: @Mebhirajainstitute
+                    </a>
+                </div>
+
+                <a href="https://wa.me/919427406406?text=Hello, I want to register for KenKen Championship" class="cta-button">
+                    WhatsApp Now to Register
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MEBHIRAJA Institute - KenKen Championship. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">The Royal Path to Mathematical Excellence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.rule-item, .category-card, .round-card, .message-box').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
