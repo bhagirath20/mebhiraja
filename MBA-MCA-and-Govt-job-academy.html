@@ -42,7 +42,17 @@
 
     .brochure-buttons{display:flex;gap:1rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
     .brochure-button{background:linear-gradient(45deg,#667eea,#764ba2);color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;border:2px solid rgba(255,255,255,.18)}
+.about-image img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
 
+.about-image img:hover {
+    transform: scale(1.05);
+}
     /* responsive */
     @media(max-width:768px){.menu-toggle{display:block}.nav-links{display:none}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:#1a1a2e;padding:1rem}}
   </style>
